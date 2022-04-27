@@ -1,0 +1,233 @@
+<Starting_Screen>:
+    name: 'starting_screen'
+    MDBoxLayout:
+        id: startingscreen_layout
+        orientation: 'vertical'
+
+        MDCard:
+            orientation: 'vertical'
+            Image:
+                source: 'first_illustration.png'
+
+            MDLabel:
+                text: 'bookbox'
+                font_size: dp(20)
+                bold: True
+                color: [0, 0, 0, 1]
+                halign: 'center'
+                font_name: 'Poppins-Bold.ttf'
+                size_hint_y: None
+                height: 50
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            MDLabel:
+                text: "Can't decide what to read?"
+                font_size: dp(10)
+                color: [0, 0, 0, 0.6]
+                halign: 'center'
+                font_name: 'Poppins-Bold.ttf'
+                size_hint_y: None
+                height: 50
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            MDLabel:
+                text: 'Let us pick a random book for you!'
+                font_size: dp(10)
+                color: [0, 0, 0, 0.6]
+                halign: 'center'
+                font_name: 'Poppins-Bold.ttf'
+                size_hint_y: None
+                height: 50
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            Widget:
+                size_hint_y: None
+                height: 20
+
+            MDIconButton:
+                id: random_button
+                icon: 'dice-multiple'
+                font_size : 60
+                pos_hint: None, None
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                md_bg_color: 96/255, 156/255, 242/255, 1
+                on_release: root.go_to_random_book_screen()
+                opacity: 0.8
+
+            Widget:
+                size_hint_y: None
+                height: 15
+
+<Random_Book_Screen>:
+    name: 'random_book_screen'
+    MDBoxLayout:
+        id: second_screen_layout
+        orientation: 'vertical'
+        md_bg_color: 96/255, 156/255, 242/255, 1
+        md_bg_color: 255/255, 255/255, 255/255, 1
+
+        MDBoxLayout:
+            id: second_screen_buttons
+            md_bg_color: 96/255, 156/255, 242/255, 1
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(50)
+            padding: dp(299), dp(0), dp(0), dp(0)
+
+            MDIconButton:
+                icon: "close"
+                on_release: root.go_to_starting_screen()
+                md_bg_color: 96/255,180/255,242/255,1
+                icon_size: "15sp"
+                opacity: 0.8
+
+        MDBoxLayout:
+            id: second_screen_image_text
+            md_bg_color: 96/255, 156/255, 242/255, 1
+            orientation: 'vertical'
+
+            AsyncImage:
+                id: imagesource
+                size_hint_x: None
+                size_hint_y: None
+                height: dp(200)
+                width: dp(200)
+                allow_stretch: True
+                pos_hint: None
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            MDLabel:
+                id: book_title
+                color: 255/255, 255/255, 255/255, 1
+                font_name: 'Poppins-Bold.ttf'
+                halign: 'center'
+                font_size: dp(13)
+
+            ScrollView:
+                do_scroll_x: False
+                do_scroll_y: True
+
+                MDLabel:
+                    id: book_author
+                    color: 255/255, 255/255, 255/255, 1
+                    halign: 'center'
+                    font_size: dp(10)
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+                    padding: 10, 10
+
+            MDGridLayout:
+                spacing: dp(20)
+                padding: dp(5)
+                cols: 4
+
+                MDCard:
+                    md_bg_color: 96/255,180/255,242/255,1
+                    orientation: 'vertical'
+                    size_hint_x: None
+                    width: dp(70)
+
+                    MDLabel:
+                        id: book_format
+                        font_size: dp(10)
+                        text: 'Format'
+                        color: 255/255, 255/255, 255/255, 1
+                        font_name: 'Poppins-Bold.ttf'
+                        halign: 'center'
+
+                    MDLabel:
+                        id: book_format_text
+                        font_size: dp(10)
+                        color: 255/255, 255/255, 255/255, 1
+                        halign: 'center'
+
+                MDCard:
+                    md_bg_color: 96/255, 180/255, 242/255, 1
+                    orientation: 'vertical'
+                    size_hint_x: None
+                    width: dp(70)
+
+                    MDLabel:
+                        id: book_pages
+                        font_size: dp(10)
+                        text: 'Pages'
+                        color: 255/255, 255/255, 255/255, 1
+                        font_name: 'Poppins-Bold.ttf'
+                        halign: 'center'
+
+                    MDLabel:
+                        id: book_pages_text
+                        font_size: dp(10)
+                        color: 255/255, 255/255, 255/255, 1
+                        halign: 'center'
+
+                MDCard:
+                    md_bg_color: 96/255, 180/255, 242/255, 1
+                    orientation: 'vertical'
+                    size_hint_x: None
+                    width: dp(70)
+
+                    MDLabel:
+                        id: book_rating
+                        font_size: dp(10)
+                        text: 'Rating'
+                        color: 255/255, 255/255, 255/255, 1
+                        font_name: 'Poppins-Bold.ttf'
+                        halign: 'center'
+
+                    MDLabel:
+                        id: book_rating_text
+                        font_size: dp(10)
+                        color: 255/255, 255/255, 255/255, 1
+                        halign: 'center'
+
+                MDCard:
+                    md_bg_color: 96/255, 180/255, 242/255, 1
+                    orientation: 'vertical'
+                    size_hint_x: None
+                    width: dp(70)
+
+                    MDLabel:
+                        id: book_reviews
+                        font_size: dp(10)
+                        text: 'Reviews'
+                        color: 255/255, 255/255, 255/255, 1
+                        font_name: 'Poppins-Bold.ttf'
+                        halign: 'center'
+
+                    MDLabel:
+                        id: book_reviews_text
+                        font_size: dp(10)
+                        color: 255/255, 255/255, 255/255, 1
+                        halign: 'center'
+
+        MDBoxLayout:
+            id: second_screen_desc_text
+            size_hint_y: 0.5
+            md_bg_color: 255/255, 255/255, 255/255, 1
+            orientation: 'vertical'
+            radius: [25, 25, 0, 0]
+            elevation: 36
+
+            MDLabel:
+                id: book_desc
+                font_size: dp(13)
+                size_hint_y: None
+                height: dp(20)
+                text: 'DESCRIPTION:'
+                font_name: 'Poppins-Bold.ttf'
+                halign: 'center'
+                color: 0/255, 0/255, 0/255, 1
+
+            ScrollView:
+                do_scroll_x: False
+                do_scroll_y: True
+
+                MDLabel:
+                    id: book_desc_text
+                    font_size: dp(10)
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+                    padding: 10, 10
